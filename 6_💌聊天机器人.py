@@ -21,6 +21,8 @@ if prompt := st.chat_input("输入您的问题"):
         st.markdown(prompt)
 
     with st.chat_message("assistant"):
+        if not key:
+            st.error("Please enter your OpenAI API key in the sidebar!")
         message_placeholder = st.empty()
         full_response = ""
         for response in openai.ChatCompletion.create(
